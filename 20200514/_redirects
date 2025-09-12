@@ -1,0 +1,10 @@
+/api/*  https://api.chatx.xyz/:splat  200
+/attachments/*  https://api.chatx.xyz/:splat 200
+/activity   /login.html   200
+/library   /login.html   200
+/store   /login.html   200
+/store/*   /login.html   200
+/channels/*   /login.html   200
+/invite/*   /login.html   200
+/guild-discovery   /login.html   200
+/app   /login.html   200

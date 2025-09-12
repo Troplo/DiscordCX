@@ -1,0 +1,695 @@
+"use strict";
+(this.webpackChunkdiscord_app = this.webpackChunkdiscord_app || []).push([
+    ["57789"],
+    {
+        461535: function (e, t, n) {
+            (n.d(t, { Z: () => _ }), n(388685));
+            var r = n(951288);
+            n(647438);
+            var i = n(442837),
+                l = n(481060),
+                a = n(45114),
+                o = n(456269),
+                c = n(344185),
+                s = n(569471),
+                u = n(131704),
+                d = n(324067),
+                f = n(306680),
+                O = n(981631),
+                b = n(388032);
+            function _(e) {
+                let t = (function (e) {
+                    let t = (0, o.n2)(e.guild_id, e.id),
+                        n = (0, i.e7)(
+                            [f.ZP, d.Z, c.Z, s.Z],
+                            () => {
+                                if (e.isForumPost()) return f.ZP.isForumPostUnread(e.id);
+                                if (e.type !== O.d4z.GUILD_CATEGORY)
+                                    return f.ZP.hasUnreadOrMentions(e.id);
+                                {
+                                    let t = d.Z.getCategories(e.getGuildId());
+                                    if (null == t[e.id]) return !1;
+                                    if (
+                                        t[e.id].some((e) => {
+                                            let { channel: t } = e;
+                                            return (
+                                                (0, u.Em)(t.type) && f.ZP.hasUnreadOrMentions(t.id)
+                                            );
+                                        })
+                                    )
+                                        return !0;
+                                    let n = new Set(t[e.id].map((e) => e.channel.id)),
+                                        r = c.Z.getThreadsForGuild(e.guild_id);
+                                    for (let e in r)
+                                        if (n.has(e)) {
+                                            for (let t in r[e])
+                                                if (
+                                                    s.Z.hasJoined(t) &&
+                                                    !s.Z.isMuted(t) &&
+                                                    f.ZP.hasUnreadOrMentions(t)
+                                                )
+                                                    return !0;
+                                        }
+                                    return !1;
+                                }
+                            },
+                            [e],
+                        );
+                    return e.isForumLikeChannel() ? t > 0 : n;
+                })(e);
+                return (0, r.jsx)(l.sNh, {
+                    id: "mark-channel-read",
+                    label: b.intl.string(b.t.e6RscX),
+                    action: function () {
+                        (0, a.U6)(e, {
+                            section: O.jXE.CHANNEL_CONTEXT_MENU,
+                            object: O.qAy.MARK_CHANNEL_AS_READ_BUTTON,
+                            objectType: O.Qqv.ACK_MANUAL,
+                        });
+                    },
+                    disabled: !t,
+                });
+            }
+        },
+        658138: function (e, t, n) {
+            n.d(t, { D: () => p });
+            var r = n(951288),
+                i = n(647438),
+                l = n(990547),
+                a = n(481060),
+                o = n(287734),
+                c = n(213609),
+                s = n(377171),
+                u = n(626135),
+                d = n(839606),
+                f = n(54480),
+                O = n(981631),
+                b = n(388032),
+                _ = n(209863);
+            function p(e) {
+                let { openPickerForChannel: t } = (0, d.B)(),
+                    n = (0, i.useCallback)(() => {
+                        (o.default.selectPrivateChannel(e.id),
+                            t(e.id),
+                            u.default.track(
+                                O.rMx.CHAT_WALLPAPER_DM_CONTEXT_MENU_ENTRY_POINT_CLICKED,
+                                { channel_id: e.id },
+                            ));
+                    }, [e.id, t]),
+                    { canAccessPicker: p } = (0, f.m)({
+                        location: "useChannelWallpaperItem",
+                        channelId: e.id,
+                    }),
+                    h = e.isPrivate() && p;
+                return ((0, c.Z)(
+                    {
+                        type: l.ImpressionTypes.MENU,
+                        name: l.ImpressionNames.CHAT_WALLPAPER_DM_CONTEXT_MENU_ENTRY_POINT,
+                    },
+                    { disableTrack: !h },
+                ),
+                    h)
+                    ? (0, r.jsx)(a.sNh, {
+                        id: "set-wallpaper",
+                        label: (0, r.jsxs)("div", {
+                            className: _.label,
+                            children: [
+                                b.intl.string(b.t.GixvUl),
+                                (0, r.jsx)(a.IGR, {
+                                    text: b.intl.string(b.t.y2b7CA),
+                                    color: s.Z.BG_BRAND,
+                                }),
+                            ],
+                        }),
+                        icon: () =>
+                            (0, r.jsx)("div", {
+                                className: _.iconWrapper,
+                                children: (0, r.jsx)(a.SrA, { size: "xs" }),
+                            }),
+                        action: n,
+                    })
+                    : null;
+            }
+        },
+        895563: function (e, t, n) {
+            (n.d(t, { P: () => h, l: () => p }), n(388685));
+            var r = n(951288);
+            n(647438);
+            var i = n(392711),
+                l = n.n(i),
+                a = n(442837),
+                o = n(481060),
+                c = n(984933),
+                s = n(853856),
+                u = n(117984),
+                d = n(593214),
+                f = n(362658),
+                O = n(981631),
+                b = n(388032);
+            function _(e, t) {
+                return e.type === O.d4z.GROUP_DM
+                    ? t
+                        ? b.intl.string(b.t["0BWmSE"])
+                        : b.intl.string(b.t.uuVTOD)
+                    : e.type === O.d4z.DM
+                        ? t
+                            ? b.intl.string(b.t["2wfKGh"])
+                            : b.intl.string(b.t.wPbAsb)
+                        : t
+                            ? b.intl.string(b.t.Bou7lZ)
+                            : b.intl.string(b.t["4wcdEx"]);
+            }
+            function p(e) {
+                let t = (0, a.e7)([c.ZP], () => c.ZP.getChannels(O.I_8))[
+                        O.d4z.GUILD_CATEGORY
+                        ],
+                    { isFavoritesPerk: n } = (0, f.z)("58e21a_1"),
+                    { notifyFavoriteAdded: i } = (0, d.up)();
+                if (!(0, d.li)(e)) return null;
+                let [[s], b] = l().partition(t, (e) => "null" === e.channel.id);
+                function p(t) {
+                    (i(), (0, u.kj)(e.id, t));
+                }
+                return 0 === b.length
+                    ? (0, r.jsx)(o.sNh, {
+                        id: "favorite-channel",
+                        label: _(e, !1),
+                        action: () => p(null),
+                    })
+                    : (0, r.jsxs)(o.sNh, {
+                        id: "favorite-channel",
+                        label: _(e, !1),
+                        action: () => p(null),
+                        children: [
+                            n &&
+                            (0, r.jsx)(o.kSQ, {
+                                children: (0, r.jsx)(
+                                    o.sNh,
+                                    {
+                                        id: "favorite-".concat(s.channel.id),
+                                        label: s.channel.name,
+                                        action: () =>
+                                            p("null" === s.channel.id ? null : s.channel.id),
+                                    },
+                                    s.channel.id,
+                                ),
+                            }),
+                            (0, r.jsx)(o.kSQ, {
+                                children: b.map((e) =>
+                                    (0, r.jsx)(
+                                        o.sNh,
+                                        {
+                                            id: "favorite-".concat(e.channel.id),
+                                            label: e.channel.name,
+                                            action: () => p(e.channel.id),
+                                        },
+                                        e.channel.id,
+                                    ),
+                                ),
+                            }),
+                        ],
+                    });
+            }
+            function h(e) {
+                let t = (0, a.e7)([s.Z], () => s.Z.isFavorite(e.id));
+                return __OVERLAY__ || !t
+                    ? null
+                    : (0, r.jsx)(o.sNh, {
+                        id: "favorite-channel",
+                        label: _(e, !0),
+                        color: "danger",
+                        action: () =>
+                            e.type === O.d4z.GUILD_CATEGORY
+                                ? (0, o.ZDy)(async () => {
+                                    let { default: t } = await n
+                                        .e("37720")
+                                        .then(n.bind(n, 357632));
+                                    return (n) => {
+                                        var i, l;
+                                        return (0, r.jsx)(
+                                            t,
+                                            ((i = (function (e) {
+                                                for (var t = 1; t < arguments.length; t++) {
+                                                    var n = null != arguments[t] ? arguments[t] : {},
+                                                        r = Object.keys(n);
+                                                    ("function" ==
+                                                    typeof Object.getOwnPropertySymbols &&
+                                                    (r = r.concat(
+                                                        Object.getOwnPropertySymbols(n).filter(
+                                                            function (e) {
+                                                                return Object.getOwnPropertyDescriptor(
+                                                                    n,
+                                                                    e,
+                                                                ).enumerable;
+                                                            },
+                                                        ),
+                                                    )),
+                                                        r.forEach(function (t) {
+                                                            var r;
+                                                            ((r = n[t]),
+                                                                t in e
+                                                                    ? Object.defineProperty(e, t, {
+                                                                        value: r,
+                                                                        enumerable: !0,
+                                                                        configurable: !0,
+                                                                        writable: !0,
+                                                                    })
+                                                                    : (e[t] = r));
+                                                        }));
+                                                }
+                                                return e;
+                                            })({}, n)),
+                                                (l = l =
+                                                    {
+                                                        onConfirm: () => {
+                                                            (n.onClose(), (0, u.oC)(e.id));
+                                                        },
+                                                        channel: e,
+                                                    }),
+                                                Object.getOwnPropertyDescriptors
+                                                    ? Object.defineProperties(
+                                                        i,
+                                                        Object.getOwnPropertyDescriptors(l),
+                                                    )
+                                                    : (function (e, t) {
+                                                        var n = Object.keys(e);
+                                                        if (Object.getOwnPropertySymbols) {
+                                                            var r = Object.getOwnPropertySymbols(e);
+                                                            n.push.apply(n, r);
+                                                        }
+                                                        return n;
+                                                    })(Object(l)).forEach(function (e) {
+                                                        Object.defineProperty(
+                                                            i,
+                                                            e,
+                                                            Object.getOwnPropertyDescriptor(l, e),
+                                                        );
+                                                    }),
+                                                i),
+                                        );
+                                    };
+                                })
+                                : (0, u.oC)(e.id),
+                    });
+            }
+        },
+        122074: function (e, t, n) {
+            (n.d(t, { U: () => E, Uf: () => v, ng: () => x }), n(388685));
+            var r = n(951288),
+                i = n(647438),
+                l = n(442837),
+                a = n(704215),
+                o = n(481060),
+                c = n(436774),
+                s = n(706140),
+                u = n(9156),
+                d = n(594174),
+                f = n(74538),
+                O = n(759198),
+                b = n(11352),
+                _ = n(213931),
+                p = n(767157),
+                h = n(112440),
+                N = n(671105),
+                m = n(552958),
+                y = n(981631),
+                j = n(921944),
+                C = n(871465),
+                T = n(388032),
+                g = n(392238);
+            function x(e, t) {
+                let n = b.Y.useExperiment(
+                        { location: "guild_context_menu" },
+                        { autoTrackExposure: !0 },
+                    ),
+                    r = I(
+                        e,
+                        void 0,
+                        a.z.PREMIUM_CUSTOM_NOTIFICATION_SOUNDS_GUILD_BADGE,
+                        n.nestedEntry ? "trailing" : "top",
+                    );
+                return ((n.nestedEntry && t) || (!n.nestedEntry && !t)) && r;
+            }
+            function v(e, t, n) {
+                return I(e, t, a.z.PREMIUM_CUSTOM_NOTIFICATION_SOUNDS_GDM_DM_BADGE, n);
+            }
+            function E() {
+                let e = b.Y.useExperiment(
+                        { location: "guild_context_menu" },
+                        { autoTrackExposure: !0 },
+                    ),
+                    [t] = (0, s.cv)([a.z.PREMIUM_CUSTOM_NOTIFICATION_SOUNDS_GUILD_BADGE]);
+                return (
+                    e.enabled &&
+                    e.nestedEntry &&
+                    t === a.z.PREMIUM_CUSTOM_NOTIFICATION_SOUNDS_GUILD_BADGE &&
+                    (0, r.jsx)(o.IGR, {
+                        className: g.newBadge,
+                        text: T.intl.string(T.t.y2b7CA),
+                    })
+                );
+            }
+            function I(e, t, a, x) {
+                var v, E;
+                let I = (0, N.OR)(e),
+                    P = (0, N._c)(e, t),
+                    S = (0, l.e7)([d.default], () => d.default.getCurrentUser()),
+                    A = (0, l.e7)([u.ZP], () => u.ZP.isMuted(e), [e]),
+                    U = 1,
+                    D = U ? (null != P ? P : I) : C.YC.CLASSIC,
+                    M = b.Y.useExperiment(
+                        { location: "guild_context_menu" },
+                        { autoTrackExposure: !0 },
+                    ).enabled,
+                    [w, Z] = i.useState(!1),
+                    { playSound: R } = (0, m.Z)(),
+                    [k, G] = (0, s.cv)([a]),
+                    L = k === a;
+                if (
+                    (i.useEffect(
+                        () => () => {
+                            w && G(j.L.TAKE_ACTION);
+                        },
+                        [w, G],
+                    ),
+                        !M)
+                )
+                    return null;
+                let B = (n) => {
+                        if ((R(n), G(j.L.TAKE_ACTION), !U && n !== C.YC.CLASSIC)) {
+                            ((0, p.Z)(n, "contextMenu"), (0, h.Z)());
+                            return;
+                        }
+                        null != t
+                            ? (0, _.M)(e, t, D, n, "contextMenu")
+                            : (0, _.t)(e, D, n, "contextMenu");
+                    },
+                    F = U ? o.Text : O.Z,
+                    Y = (0, C.LB)(),
+                    z =
+                        null !=
+                        (E = null == (v = Y.find((e) => e.value === D)) ? void 0 : v.label)
+                            ? E
+                            : T.intl.string(T.t.p3Hg5e),
+                    V = (0, r.jsx)(o.IGR, {
+                        className: g.newBadge,
+                        text: T.intl.string(T.t.y2b7CA),
+                    });
+                return (0, r.jsx)(o.sNh, {
+                    id: "notification-sounds",
+                    label: (e) => {
+                        let { isFocused: t } = e;
+                        return (
+                            t && Z(t),
+                                (0, r.jsxs)("div", {
+                                    className: g.rootContainer,
+                                    children: [
+                                        (0, r.jsxs)("div", {
+                                            children: [
+                                                L && "top" === x && V,
+                                                (0, r.jsxs)("div", {
+                                                    className: g.headerContainer,
+                                                    children: [
+                                                        (0, r.jsx)(F, {
+                                                            className: g.text,
+                                                            variant: "text-sm/medium",
+                                                            children: T.intl.string(T.t.mrqSOj),
+                                                        }),
+                                                        (0, r.jsx)(o.SrA, {
+                                                            size: "xs",
+                                                            className: g.nitroWheel,
+                                                            color: U ? void 0 : c.JX.PREMIUM_TIER_2,
+                                                        }),
+                                                    ],
+                                                }),
+                                                null != z &&
+                                                (0, r.jsx)(F, {
+                                                    className: g.text,
+                                                    variant: "text-xs/normal",
+                                                    children: z,
+                                                }),
+                                            ],
+                                        }),
+                                        L && "trailing" === x && V,
+                                    ],
+                                })
+                        );
+                    },
+                    action:
+                        e !== y.aIL
+                            ? () =>
+                                (0, o.ZDy)(async () => {
+                                    let { default: t } = await Promise.all([
+                                        n.e("15076"),
+                                        n.e("99964"),
+                                    ]).then(n.bind(n, 907941));
+                                    return (n) => {
+                                        var i, l;
+                                        return (0, r.jsx)(
+                                            t,
+                                            ((i = (function (e) {
+                                                for (var t = 1; t < arguments.length; t++) {
+                                                    var n = null != arguments[t] ? arguments[t] : {},
+                                                        r = Object.keys(n);
+                                                    ("function" ==
+                                                    typeof Object.getOwnPropertySymbols &&
+                                                    (r = r.concat(
+                                                        Object.getOwnPropertySymbols(n).filter(
+                                                            function (e) {
+                                                                return Object.getOwnPropertyDescriptor(n, e)
+                                                                    .enumerable;
+                                                            },
+                                                        ),
+                                                    )),
+                                                        r.forEach(function (t) {
+                                                            var r;
+                                                            ((r = n[t]),
+                                                                t in e
+                                                                    ? Object.defineProperty(e, t, {
+                                                                        value: r,
+                                                                        enumerable: !0,
+                                                                        configurable: !0,
+                                                                        writable: !0,
+                                                                    })
+                                                                    : (e[t] = r));
+                                                        }));
+                                                }
+                                                return e;
+                                            })({}, n)),
+                                                (l = l = { guildId: e }),
+                                                Object.getOwnPropertyDescriptors
+                                                    ? Object.defineProperties(
+                                                        i,
+                                                        Object.getOwnPropertyDescriptors(l),
+                                                    )
+                                                    : (function (e, t) {
+                                                        var n = Object.keys(e);
+                                                        if (Object.getOwnPropertySymbols) {
+                                                            var r = Object.getOwnPropertySymbols(e);
+                                                            n.push.apply(n, r);
+                                                        }
+                                                        return n;
+                                                    })(Object(l)).forEach(function (e) {
+                                                        Object.defineProperty(
+                                                            i,
+                                                            e,
+                                                            Object.getOwnPropertyDescriptor(l, e),
+                                                        );
+                                                    }),
+                                                i),
+                                        );
+                                    };
+                                })
+                            : void 0,
+                    hasSubmenu: !0,
+                    children: (0, r.jsxs)(o.kSQ, {
+                        children: [
+                            Y.map((e, t) =>
+                                (0, r.jsxs)(
+                                    i.Fragment,
+                                    {
+                                        children: [
+                                            U || e.value === C.YC.CLASSIC
+                                                ? (0, r.jsx)(o.k5B, {
+                                                    id: e.label,
+                                                    group: "notification-preset",
+                                                    checked: (null != D ? D : C.YC.CLASSIC) === e.value,
+                                                    label: e.label,
+                                                    action: () => B(e.value),
+                                                })
+                                                : (0, r.jsx)(o.sNh, {
+                                                    id: e.label,
+                                                    label: (t) => {
+                                                        let { isFocused: n } = t;
+                                                        return (0, r.jsxs)("div", {
+                                                            className: g.labelContainer,
+                                                            children: [
+                                                                (0, r.jsx)(O.Z, {
+                                                                    color: n ? "always-white" : void 0,
+                                                                    variant: "text-sm/medium",
+                                                                    children: e.label,
+                                                                }),
+                                                                (0, r.jsx)(o.g8d, {
+                                                                    className: g.playButton,
+                                                                    color: n
+                                                                        ? o.TVs.colors.INTERACTIVE_ACTIVE
+                                                                        : o.TVs.colors.INTERACTIVE_NORMAL,
+                                                                }),
+                                                            ],
+                                                        });
+                                                    },
+                                                    action: () => B(e.value),
+                                                }),
+                                            e.value === C.YC.CLASSIC ? (0, r.jsx)(o.Clw, {}) : null,
+                                        ],
+                                    },
+                                    t,
+                                ),
+                            ),
+                            A &&
+                            (0, r.jsxs)(r.Fragment, {
+                                children: [
+                                    (0, r.jsx)(o.Clw, {}),
+                                    (0, r.jsx)(o.sNh, {
+                                        id: "label",
+                                        label: (0, r.jsx)(o.Text, {
+                                            className: g.mutedLabel,
+                                            variant: "text-sm/medium",
+                                            children: T.intl.string(T.t["a9G/ER"]),
+                                        }),
+                                    }),
+                                ],
+                            }),
+                        ],
+                    }),
+                });
+            }
+        },
+        552958: function (e, t, n) {
+            (n.d(t, { Z: () => a }), n(388685));
+            var r = n(647438),
+                i = n(460181),
+                l = n(974180);
+            function a() {
+                let [e, t] = r.useState(),
+                    n = r.useRef(-1);
+                return {
+                    playSound: r.useCallback((e) => {
+                        (t(e),
+                            i.GN(
+                                l.Ay,
+                                l.yk,
+                                () => {
+                                    (clearTimeout(n.current),
+                                        (n.current = setTimeout(() => {
+                                            t(void 0);
+                                        }, 500)));
+                                },
+                                e,
+                            ));
+                    }, []),
+                    isPlaying: null != e,
+                    soundpackPlaying: e,
+                };
+            }
+        },
+        213931: function (e, t, n) {
+            n.d(t, { M: () => s, t: () => c });
+            var r = n(381499),
+                i = n(675478),
+                l = n(592125),
+                a = n(626135),
+                o = n(981631);
+            function c(e, t, n, l) {
+                t !== n &&
+                ((0, i.PS)(
+                    e,
+                    (e) => {
+                        e.customNotificationSoundConfig = {
+                            notificationSoundPackId: r.Gm.create({ value: n }),
+                        };
+                    },
+                    i.fy.INFREQUENT_USER_ACTION,
+                ),
+                    a.default.track(o.rMx.CUSTOM_NOTIFICATION_SOUND_SETTINGS_UPDATED, {
+                        guild_id: e,
+                        location: l,
+                        soundpack: n,
+                    }));
+            }
+            function s(e, t, n, c, s) {
+                var u;
+                n !== c &&
+                ((0, i.BU)(
+                    e,
+                    t,
+                    (e) => {
+                        e.customNotificationSoundConfig = {
+                            notificationSoundPackId: r.Gm.create({ value: c }),
+                        };
+                    },
+                    i.fy.INFREQUENT_USER_ACTION,
+                ),
+                    a.default.track(o.rMx.CUSTOM_NOTIFICATION_SOUND_SETTINGS_UPDATED, {
+                        guild_id: e,
+                        channel_id: t,
+                        channel_type: null == (u = l.Z.getChannel(t)) ? void 0 : u.type,
+                        location: s,
+                        soundpack: c,
+                    }));
+            }
+        },
+        767157: function (e, t, n) {
+            n.d(t, { Z: () => l });
+            var r = n(626135),
+                i = n(981631);
+            function l(e, t) {
+                r.default.track(i.rMx.CUSTOM_NOTIFICATION_SOUND_OPTION_PLAYED, {
+                    location: t,
+                    soundpack: e,
+                });
+            }
+        },
+        112440: function (e, t, n) {
+            n.d(t, { Z: () => l });
+            var r = n(951288);
+            n(647438);
+            var i = n(481060);
+            function l() {
+                (0, i.ZDy)(async () => {
+                    let { default: e } = await n.e("72323").then(n.bind(n, 933006));
+                    return (t) =>
+                        (0, r.jsx)(
+                            e,
+                            (function (e) {
+                                for (var t = 1; t < arguments.length; t++) {
+                                    var n = null != arguments[t] ? arguments[t] : {},
+                                        r = Object.keys(n);
+                                    ("function" == typeof Object.getOwnPropertySymbols &&
+                                    (r = r.concat(
+                                        Object.getOwnPropertySymbols(n).filter(function (e) {
+                                            return Object.getOwnPropertyDescriptor(n, e).enumerable;
+                                        }),
+                                    )),
+                                        r.forEach(function (t) {
+                                            var r;
+                                            ((r = n[t]),
+                                                t in e
+                                                    ? Object.defineProperty(e, t, {
+                                                        value: r,
+                                                        enumerable: !0,
+                                                        configurable: !0,
+                                                        writable: !0,
+                                                    })
+                                                    : (e[t] = r));
+                                        }));
+                                }
+                                return e;
+                            })({}, t),
+                        );
+                });
+            }
+        },
+    },
+]);
+//# sourceMappingURL=5a506f06c7177c91.js.map

@@ -1,0 +1,2 @@
+"use strict";(this.webpackChunkdiscord_app=this.webpackChunkdiscord_app||[]).push([["79835"],{72493:function(a,n,r){r.r(n),r.d(n,{ManaPlayground:()=>i,default:()=>s});var t=r(951288);r(647438);var u=r(51251),c=r(997612);function i(){return(0,t.jsx)(c.X,{config:u.g})}let s=i}}]);
+//# sourceMappingURL=aa69bc785d5923e4.js.map

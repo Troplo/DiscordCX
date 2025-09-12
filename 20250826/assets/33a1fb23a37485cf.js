@@ -1,0 +1,2 @@
+"use strict";(this.webpackChunkdiscord_app=this.webpackChunkdiscord_app||[]).push([["51760"],{629503:function(s,e,a){a.r(e),a.d(e,{default:()=>p});let p=JSON.parse('{"swfLzc":"This message comes from a separate file"}')}}]);
+//# sourceMappingURL=33a1fb23a37485cf.js.map
