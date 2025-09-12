@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>{{ inst_name }} - index</title>
+	<style>
+		#content {
+			text-align: center;
+		}
+	</style>
+    </head>
+    <body>
+        <main id="content">
+            <h1>
+                welcome to {{ inst_name }}, a Litecord instance
+            </h1>
+		
+		<p><a href="/login.html">Click here to continue</a>
+            <p>
+            Litecord is an open-source reimplementation of the ChatX API.
+            </p>
+
+            <p>
+            ChatX frontend modifications being hosted in this instance
+            are not, and will never be, related to the Litecord project.
+            </p>
+
+            <p>
+            By accessing an instance containing such modifications, the instance
+            is breaking the ChatX Terms of Service. Proceed with caution.
+            </p>
+
+            <p>
+            It supports nodeinfo, despite not being part
+            in any federated network.
+            </p>
+
+            <p>
+                <a href="https://gitlab.com/litecord/litecord">
+                    Litecord source code
+                </a>
+            </p>
+            <p>
+                <a href="{{request.protocol}}/nodeinfo/2.1.json">
+                    This instance's nodeinfo (general statistics)
+                </a>
+            </p>
+
+        </main>
+    </body>
+</html>

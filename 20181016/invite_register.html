@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ChatX Registration</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/invite_register.css" rel="stylesheet">
+        <style>
+        a {
+    color: #7289DA;
+      }
+</style>
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.chatx.xyz"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://flowlytics.host/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '5']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+    </head>
+    <body>
+        <main id="register">
+            <h1>register</h1>
+            <form method="post" action="https://api.chatx.xyz/api/v6/auth/register_inv">
+                <div class="form-group">
+                    <label for="username">Username <small>(only alphanumeric or underscore, no spaces)</small></label>
+                    <input type="text" name="username" maxlength=19 minlength=2 pattern="^[a-zA-Z0-9_]+$" placeholder="Troplo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" placeholder="troplo@flowinity.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" minlength=5 required>
+                </div>
+
+                <div class="form-group">
+                    <label for="invcode">ChatX PassKey</label>
+                    <p>What is a PassKey?<br>ChatX is invite only, due to various reasons, Ask a member to give you a PassKey to register!</p>
+                    <input type="text" name="invcode" placeholder="ChatX-ABCD1234" required>
+                </div>
+                <div class="form-group">
+                   <input type="hidden" name="invite" value="chatx">
+                   <p>
+                </div>
+                <input type="submit" value="Register to ChatX?">
+            </form>
+            <a href="https://chatx.xyz/login"><h3>Already have a ChatX account? Login!</h3></a>
+        </main>
+    </body>
+</html>
