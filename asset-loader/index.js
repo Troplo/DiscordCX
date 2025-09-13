@@ -47,6 +47,21 @@ app.get('/assets/:assetId.:ext', (req, res) => {
   }
 });
 
+app.get(/.*/, (req, res) => {
+  if(req.headers['x-troplo-at'] !== process.env.STREAMER_ACCESS_TOKEN && req.query.at !== process.env.STREAMER_ACCESS_TOKEN) {
+    return res.status(404).send('Asset not found (Code 0)');
+  }
+
+  const version = req.headers['x-troplo-discord-version'] || req.query.v;
+  if(version?.length !== 8 || isNaN(Number(version)) || !ALLOWED_VERSIONS.includes(version)) {
+    return res.status(404).send('Asset not found (Code 1)');
+  }
+
+  const assetPath = path.join(__dirname, '..', version, 'index.html');
+
+  res.sendFile(assetPath);
+});
+
 app.listen(PORT, () => {
   console.log(`Asset loader running on port ${PORT}`);
 });
